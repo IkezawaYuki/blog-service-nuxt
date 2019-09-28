@@ -7,6 +7,7 @@
       <el-table
       :data="showPosts"
       style="width:100%"
+      @row-click="handleClick"
       class="table" 
       >
       <el-table-column
@@ -29,29 +30,25 @@
 </template>
 
 <script>
+import moment from '~/plugins/moment'
+import {mapGetters} from 'vuex'
+
 export default {
+  async asyncData({store}){
+    await store.dispatch('posts/fetchPost')
+  },
   computed:{
     showPosts(){
-      return [
-        {
-          id: '001',
-          title: 'title1',
-          body: 'body1',
-          created_at: '2019/09/23 12:00:00',
-          user:{
-            id: 'ike01'
-          }
-        },
-        {
-          id: '002',
-          title: 'title2',
-          body: 'body2',
-          created_at: '2019/09/23 12:00:00',
-          user:{
-            id: 'ike02'
-          }
-        },
-      ]
+      return this.posts.map(post => {
+        post.created_at = moment(post.created_at).format('YYYY/MM/DD HH:mm:ss')
+        return post
+      })
+    },
+    ...mapGetters('posts', ['posts'])
+  },
+  methods:{
+    handleClick(post){
+      this.$router.push(`/posts/${post.id}`)
     }
   }
 }
