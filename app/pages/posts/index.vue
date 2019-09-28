@@ -35,7 +35,7 @@ import {mapGetters} from 'vuex'
 
 export default {
   async asyncData({store}){
-    await store.dispatch('posts/fetchPost')
+    await store.dispatch('posts/fetchPosts')
   },
   computed:{
     showPosts(){
