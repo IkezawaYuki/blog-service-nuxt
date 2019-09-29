@@ -18,5 +18,7 @@
     "nuxt": "^2.0.0",
     "universal-cookie": "^4.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }
