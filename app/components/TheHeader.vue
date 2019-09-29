@@ -7,12 +7,12 @@
       投稿一覧
     </el-menu-item>
 
+    <no-ssr>
     <el-menu-item index="4" style="float:right;"
-    :router="{path: `/users/${user.id}`}" v-if="user">
+    :route="{path: `/users/${user.id}`}" v-if="user">
     <span>{{user.id}}</span>
     </el-menu-item>
-
-    <no-ssr>
+    
       <el-menu-item index="4" style="float:right;" :route="{path: '/'}">
         <span>ログイン</span>
       </el-menu-item>
