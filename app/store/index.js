@@ -42,3 +42,4 @@ export const actions = {
     commit('setUser', {user})
   }
 }
+
